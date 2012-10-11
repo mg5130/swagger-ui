@@ -988,3 +988,16 @@ body {
     padding: 10px 220px 20px 220px;
     background-color: white;
 }
+
+.list li
+{
+    list-style-type: square; 
+    margin-left: 20px;
+    margin-top: 3px;
+} 
+.list ul
+{
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
