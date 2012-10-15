@@ -1,0 +1,123 @@
+.response_highlight {
+	position: relative;
+	line-height: 18px;
+	border: 1px solid #f4f2e4;
+	font-family: "Anonymous Pro", "Menlo", "Consolas", "Bitstream Vera Sans Mono", "Courier New", monospace;
+	font-size: 0.9em;
+}
+
+.response_highlight .node_collapse {
+	cursor: pointer;
+	padding-right: 14px;
+}
+
+.response_highlight .node_collapse.collapsed {
+	background: transparent url('../images/jsonhighlight/collapse.gif') 8px 4px no-repeat;
+}
+
+.response_highlight .node_collapse.expanded {
+	background: transparent url('../images/jsonhighlight/expand.gif') 8px 4px no-repeat;
+}
+
+.response_highlight .rh_controls {
+	position: absolute;
+	top: -2px;
+	right: 25px;
+	height: 25px;
+	line-height: 25px;
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 0 0 5px 5px;
+}
+
+.response_highlight .rh_controls .hl_btn,
+.response_highlight .rh_controls .raw_btn {
+	float: right;
+	cursor: pointer;
+}
+
+.response_highlight .rh_controls .hl_btn {
+	padding: 0 10px;
+	border-width: 0 1px 0 0;
+	border-style: solid;
+	border-radius: 0 0 0 4px;
+}
+
+.response_highlight .rh_controls .raw_btn {
+	padding: 0 10px;
+	border-width: 0 0 0 1px;
+	border-style: solid;
+	border-radius: 0 0 4px 0;
+}
+
+.response_highlight .rh_content {
+	max-height: 1000px;
+	overflow-y: auto;
+	padding: 10px;
+}
+
+.response_highlight .rh_content .hl,
+.response_highlight .rh_content .raw {
+	margin-top: 20px;
+}
+
+.response_highlight .hidden {
+	display: none;
+}
+
+
+/* Light theme */
+
+.response_highlight.light {
+	background-color: #fffdf4;
+}
+
+.response_highlight.light .rh_controls {
+	background-color: #e0e0e0;
+	border-color: #e0e0e0;
+}
+
+.response_highlight.light .rh_controls .hl_btn,
+.response_highlight.light .rh_controls .raw_btn {
+	color: #656046;
+}
+
+.response_highlight.light .rh_controls .hl_btn {
+	border-color: #d5d0b6;
+}
+
+.response_highlight.light .rh_controls .raw_btn {
+	border-color: #f5f0d6;
+}
+
+.response_highlight.light .rh_controls .hl_btn:hover,
+.response_highlight.light .rh_controls .raw_btn:hover {
+	/* color: red; */
+	background-color: #f5f0d6;
+}
+
+.response_highlight.light .response_node {
+	padding-left: 30px;
+	border-left: 1px dotted gray;
+}
+
+.response_highlight.light .response_node_type {
+	font-size: 10px;
+	color: gray;
+	display: none;
+}
+
+.response_highlight.light .response_node_key {
+	color: #606;
+}
+
+.response_highlight.light .response_number {
+	color: #00d;
+}
+
+.response_highlight.light .response_node_val {
+	color: #d20;
+}
+
+/* Light theme end */
+
