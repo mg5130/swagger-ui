@@ -1,18 +1,23 @@
 <td class='code'>{{name}}</td>
 <td>
-	
+
 	{{#if isBody}}
-		{{#if defaultValue}}
-			<textarea class='body-textarea' name='{{name}}'>{{defaultValue}}</textarea>
+		{{#if isFile}}
+			<input type="file" name='{{name}}'/>
 		{{else}}
-		    <textarea class='body-textarea' name='{{name}}'></textarea>
+			{{#if defaultValue}}
+				<textarea class='body-textarea' name='{{name}}'>{{defaultValue}}</textarea>
+			{{else}}
+				<textarea class='body-textarea' name='{{name}}'></textarea>
+				<br />
+				<div class="content-type" />
+			{{/if}}
 		{{/if}}
-		
 	{{else}}
 		{{#if defaultValue}}
 			<input minlength='0' name='{{name}}' placeholder='' type='text' value='{{defaultValue}}'/>
 		{{else}}
-		    <input minlength='0' name='{{name}}' placeholder='' type='text' value=''/>
+			<input minlength='0' name='{{name}}' placeholder='' type='text' value=''/>
 		{{/if}}
 	{{/if}}
 
@@ -20,3 +25,7 @@
 <td width='40'>{{{dataType}}}</td>
 <td width='600'>{{{description}}}</td>
 <td width='150'>{{{example}}}</td>
+
+<td>
+	<span class="model-signature"></span>
+</td>

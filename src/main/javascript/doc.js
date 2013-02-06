@@ -65,7 +65,15 @@ function clippyCopiedCallback(a) {
 function log() {
   if (window.console) console.log.apply(console,arguments);
 }
-  
+// Handle browsers that do console incorrectly (IE9 and below, see http://stackoverflow.com/a/5539378/7913)
+if (Function.prototype.bind && console && typeof console.log == "object") {
+    [
+      "log","info","warn","error","assert","dir","clear","profile","profileEnd"
+    ].forEach(function (method) {
+        console[method] = this.bind(console[method], console);
+    }, Function.prototype.call);
+}
+
 var Docs = {
 
 	shebang: function() {
@@ -117,23 +125,36 @@ var Docs = {
 
 	// Expand resource
 	expandEndpointListForResource: function(resource) {
-		$('#resource_' + resource).addClass('active');
+		var resource = Docs.escapeResourceName(resource);
+		if (resource == '') {
+			$('.resource ul.endpoints').slideDown();
+			return;
+		}
+		
+		$('li#resource_' + resource).addClass('active');
 
-		var elem = $('li#resource_' + Docs.escapeResourceName(resource) + ' ul.endpoints');
+		var elem = $('li#resource_' + resource + ' ul.endpoints');
 		elem.slideDown();
 	},
 
 	// Collapse resource and mark as explicitly closed
 	collapseEndpointListForResource: function(resource) {
-		$('#resource_' + resource).removeClass('active');
+		var resource = Docs.escapeResourceName(resource);
+		$('li#resource_' + resource).removeClass('active');
 
-		var elem = $('li#resource_' + Docs.escapeResourceName(resource) + ' ul.endpoints');
+		var elem = $('li#resource_' + resource + ' ul.endpoints');
 		elem.slideUp();
 	},
 
 	expandOperationsForResource: function(resource) {
 		// Make sure the resource container is open..
 		Docs.expandEndpointListForResource(resource);
+		
+		if (resource == '') {
+			$('.resource ul.endpoints li.operation div.content').slideDown();
+			return;
+		}
+
 		$('li#resource_' + Docs.escapeResourceName(resource) + ' li.operation div.content').each(function() {
 			Docs.expandOperation($(this));
 		});
@@ -142,13 +163,14 @@ var Docs = {
 	collapseOperationsForResource: function(resource) {
 		// Make sure the resource container is open..
 		Docs.expandEndpointListForResource(resource);
+
 		$('li#resource_' + Docs.escapeResourceName(resource) + ' li.operation div.content').each(function() {
 			Docs.collapseOperation($(this));
 		});
 	},
 
 	escapeResourceName: function(resource) {
-		 return resource.replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^`{|}~]/g, "\\$&")
+		return resource.replace(/[!"#$%&'()*+,.\/:;<=>?@\[\\\]\^`{|}~]/g, "\\$&");
 	},
 
 	expandOperation: function(elem) {

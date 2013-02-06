@@ -1,20 +1,30 @@
 <td class='code required'>{{name}}</td>
 <td>
 	{{#if isBody}}
-		{{#if defaultValue}}
-			<textarea class='body-textarea' placeholder='(required)' name='{{name}}'>{{defaultValue}}</textarea>
+		{{#if isFile}}
+			<input type="file" name='{{name}}'/>
 		{{else}}
-		    <textarea class='body-textarea' placeholder='(required)' name='{{name}}'></textarea>
+			{{#if defaultValue}}
+				<textarea class='body-textarea' placeholder='(required)' name='{{name}}'>{{defaultValue}}</textarea>
+			{{else}}
+				<textarea class='body-textarea' placeholder='(required)' name='{{name}}'></textarea>
+				<br />
+				<div class="content-type" />
+			{{/if}}
 		{{/if}}
-		
 	{{else}}
-		{{#if defaultValue}}
-		    <input class='required' minlength='1' name='{{name}}' placeholder='(required)' type='text' value='{{defaultValue}}'/>
+		{{#if isFile}}
+			<input class='required' type='file' name='{{name}}'/>
 		{{else}}
-		    <input class='required' minlength='1' name='{{name}}' placeholder='(required)' type='text' value=''/>
+			{{#if defaultValue}}
+				<input class='required' minlength='1' name='{{name}}' placeholder='(required)' type='text' value='{{defaultValue}}'/>
+			{{else}}
+				<input class='required' minlength='1' name='{{name}}' placeholder='(required)' type='text' value=''/>
+			{{/if}}
 		{{/if}}
 	{{/if}}
 </td>
 <td width='40'>{{{dataType}}}</td>
 <td width='600'>{{{description}}}</td>
 <td width='150'>{{{example}}}</td>
+<td><span class="model-signature"></span></td>
