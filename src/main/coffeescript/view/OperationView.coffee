@@ -250,7 +250,7 @@ class OperationView extends Backbone.View
 #<<<<<<< HEAD
       #response_body = "<pre>" + JSON.stringify(JSON.parse(data.responseText), null, 2).replace(/\n/g, "<br>") + "</pre>"
       #log $.fn.jsonHighlight data.responseText
-      $response_body = $.fn.jsonHighlight data.responseText
+      $response_body = $.fn.jsonHighlight data.responseText, true
     catch error
       $response_body = $("<span style='color:red'>&nbsp;&nbsp;&nbsp;[unable to parse as json; raw response below]</span><br><pre>" + data.responseText + "</pre>")
 #=======

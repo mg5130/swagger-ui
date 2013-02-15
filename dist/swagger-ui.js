@@ -1525,7 +1525,7 @@ templates['resource'] = template(function (Handlebars,depth0,helpers,partials,da
     OperationView.prototype.showStatus = function(data) {
       var $response_body;
       try {
-        $response_body = $.fn.jsonHighlight(data.responseText);
+        $response_body = $.fn.jsonHighlight(data.responseText, true);
       } catch (error) {
         $response_body = $("<span style='color:red'>&nbsp;&nbsp;&nbsp;[unable to parse as json; raw response below]</span><br><pre>" + data.responseText + "</pre>");
       }

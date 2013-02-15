@@ -591,6 +591,8 @@
           if (args[param.name]) {
             reg = new RegExp('\{' + param.name + '[^\}]*\}', 'gi');
             url = url.replace(reg, encodeURIComponent(args[param.name]));
+            // I'm sorry :(
+            // Michal made me do this
             reg2 = new RegExp('%2F', 'gi');
             url = url.replace(reg2, '/');
             delete args[param.name];

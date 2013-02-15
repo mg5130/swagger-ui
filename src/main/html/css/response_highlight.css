@@ -22,7 +22,6 @@
 .response_highlight .rh_controls {
 	position: absolute;
 	top: -2px;
-	right: 25px;
 	height: 25px;
 	line-height: 25px;
 	border-width: 2px;
@@ -30,12 +29,23 @@
 	border-radius: 0 0 5px 5px;
 }
 
+.response_highlight .rh_controls.exp_controls {
+    right: 25px;
+}
+
+.response_highlight .rh_controls.hl_controls {
+    right: 177px;
+}
+
+.response_highlight .rh_controls .col_all_btn,
+.response_highlight .rh_controls .exp_all_btn,
 .response_highlight .rh_controls .hl_btn,
 .response_highlight .rh_controls .raw_btn {
 	float: right;
 	cursor: pointer;
 }
 
+.response_highlight .rh_controls .exp_all_btn,
 .response_highlight .rh_controls .hl_btn {
 	padding: 0 10px;
 	border-width: 0 1px 0 0;
@@ -43,6 +53,7 @@
 	border-radius: 0 0 0 4px;
 }
 
+.response_highlight .rh_controls .col_all_btn,
 .response_highlight .rh_controls .raw_btn {
 	padding: 0 10px;
 	border-width: 0 0 0 1px;
@@ -77,19 +88,27 @@
 	border-color: #e0e0e0;
 }
 
+.response_highlight.light .rh_controls .exp_all_btn,
+.response_highlight.light .rh_controls .col_all_btn,
 .response_highlight.light .rh_controls .hl_btn,
 .response_highlight.light .rh_controls .raw_btn {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
 	color: #656046;
 }
 
+.response_highlight.light .rh_controls .col_all_btn,
 .response_highlight.light .rh_controls .hl_btn {
 	border-color: #d5d0b6;
 }
 
+.response_highlight.light .rh_controls .exp_all_btn,
 .response_highlight.light .rh_controls .raw_btn {
 	border-color: #f5f0d6;
 }
 
+.response_highlight.light .rh_controls .exp_all_btn:hover,
+.response_highlight.light .rh_controls .col_all_btn:hover,
 .response_highlight.light .rh_controls .hl_btn:hover,
 .response_highlight.light .rh_controls .raw_btn:hover {
 	/* color: red; */
