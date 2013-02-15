@@ -120,6 +120,8 @@ class OperationView extends Backbone.View
 
       log "bodyParam = " + bodyParam 
 
+      console.log('%%%%%', map)
+      
       headerParams = null
       invocationUrl = 
         if @model.supportHeaderParams()
@@ -265,7 +267,7 @@ class OperationView extends Backbone.View
     $(".response", $(@el)).slideDown()
     $(".response_hider", $(@el)).show()
     $(".response_throbber", $(@el)).hide()
-    hljs.highlightBlock($('.response_body', $(@el))[0])
+    #hljs.highlightBlock($('.response_body', $(@el))[0])
 
   toggleOperationContent: ->
     elem = $('#' + @model.resourceName + "_" + @model.nickname + "_" + @model.httpMethod + "_" + @model.number + "_content")
