@@ -36,11 +36,11 @@
 			.join(''));
 
 			addListeners($objectNode);
-			
+
 			if (collapse === true) {
 			    collapseFirstLevel($objectNode);
 			}
-			
+
 			return $objectNode;
 		}
 
@@ -48,40 +48,40 @@
 
 			var $raw = $node.find('.raw'),
 				$hl = $node.find('.hl');
-			
+
 			$node.find('.node_collapse').click( function() {
 
                 var $t = $(this);
 
                 if ($t.hasClass('collapsed')) {
-                    
+
                     //$t.text($t.text() + '...');
                     $t.removeClass('collapsed').addClass('expanded');
                     $t.next().show();
-                    
+
                 } else if ($t.hasClass('expanded')) {
-                    
+
                     //$t.text($t.text().replace('...', ''));
                     $t.removeClass('expanded').addClass('collapsed');
                     $t.next().hide();
                 }
-                
+
             })
 			.mousedown(stop);
-			
+
 			$node.find('.col_all_btn').click(function(e) {
                 collapseAll($node);
             });
-            
+
 			$node.find('.exp_all_btn').click(function(e) {
                 expandAll($node);
             });
-			
+
 			$node.find('.raw_btn').click(function(e) {
 				$raw.removeClass('hidden');
 				$hl.addClass('hidden');
 			}).mousedown(stop);
-			
+
 			$node.find('.hl_btn').click(function(e) {
 				$hl.removeClass('hidden');
 				$raw.addClass('hidden');
@@ -90,7 +90,8 @@
 		}
 
 		function collapseFirstLevel($node) {
-		    $node.find('.hl > .response_node > .node_collapse').each(function(k, v) {
+		    //$node.find('.hl > .response_node > .node_collapse').each(function(k, v) {
+		    $node.find('.hl > .response_node > .response_node > .node_collapse').each(function(k, v) {
                 var $t = $(this);
 
                 //$t.text($t.text() + '...');
@@ -98,7 +99,7 @@
                 $t.next().hide();
             });
 		}
-		
+
 		function collapseAll($node) {
 		    $node.find('.hl > .response_node .node_collapse').each(function(k, v) {
                 var $t = $(this);
@@ -119,12 +120,12 @@
             });
 		}
 
-		
+
 		function stop(e){
 			e.preventDefault();
 			e.stopPropagation();
 		}
-		
+
 		function SortObject(oData) {
 			var oNewData = {};
 			var aSortArray = [];
@@ -181,7 +182,7 @@
 
 			// open object
 			if (sDataType == "array") {
-				
+
 				if (oData.length === 0) {
 					return "<span class='response_node_type'>Array</span> []";
 				}
@@ -190,9 +191,9 @@
 					'<span class="node_collapse expanded" title="fold/unfold">[</span>',
 					'<div class="response_node">'
 				].join('');
-				
+
 			} else {
-				
+
 				var iCount = 0;
 				$.each(oData, function() {
 					iCount++;
@@ -206,7 +207,7 @@
 					'<span class="node_collapse expanded" title="fold/unfold">{</span>',
 					'<div class="response_node">'
 				].join('');
-				
+
 			}
 
 			// loop through items
